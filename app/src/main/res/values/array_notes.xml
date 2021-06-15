@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="notebook">
+
+        <item>Заметка 1</item>
+        <item>text note 1</item> <!-- текст заметки 1 -->
+        <item>date note 1</item> <!-- дата заметки 1 -->
+        <item>mark note 1</item> <!-- примечание заметки 1 -->
+
+
+        <item>Заметка 2</item>
+        <item>text note 2</item>
+        <item>date note 2</item>
+        <item>mark note 2</item>
+
+
+        <item>Заметка 3</item>
+        <item>text note 3</item>
+        <item>date note 3</item>
+        <item>mark note 3</item>
+
+    </array>
+</resources>
