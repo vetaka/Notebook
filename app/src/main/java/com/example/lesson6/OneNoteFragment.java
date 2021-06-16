@@ -14,21 +14,21 @@ import androidx.fragment.app.Fragment;
 public class OneNoteFragment extends Fragment {
     public static final String CURRENT_NOTE = "currentNote";
     public Note currentNote = null;
-    private EditText nameOfNote;
-    private EditText textOfNote;
-    private EditText dateOfNote;
-    private EditText markOfNote;
+    private EditText nameOfNoteET;
+    private EditText textOfNoteET;
+    private EditText dateOfNoteET;
+    private EditText markOfNoteET;
     private Button saveButton;
 
     // Фабричный метод создания фрагмента
     // Фрагменты рекомендуется создавать через фабричные методы
     public static OneNoteFragment newInstance ( Note currentNote ) {
-        OneNoteFragment f = new OneNoteFragment ();
+        OneNoteFragment oneNF = new OneNoteFragment ();
         // Передача параметра
         Bundle args = new Bundle ();
         args.putParcelable ( CURRENT_NOTE, currentNote );
-        f.setArguments ( args );
-        return f;
+        oneNF.setArguments ( args );
+        return oneNF;
     }
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
@@ -41,25 +41,24 @@ public class OneNoteFragment extends Fragment {
     @Override
     public View onCreateView ( LayoutInflater inflater, ViewGroup container,
                                Bundle savedInstanceState ) {
-        // Получить из ресурсов массив названий заметок
-        // TypedArray notes = getResources().obtainTypedArray(R.array.notebook);
 
         // Таким способом можно получить головной элемент из макета
         View view = inflater.inflate ( R.layout.fragment_one_note_view, null );
-        // найти в контейнере элемент-EditText -имя заметки
-        nameOfNote = view.findViewById ( R.id.name_of_note );
-        textOfNote = view.findViewById ( R.id.text_of_note );
-        dateOfNote = view.findViewById ( R.id.date_of_note );
-        markOfNote = view.findViewById ( R.id.mark_of_note );
+        // найти в контейнере элементы-EditText
+        nameOfNoteET = view.findViewById ( R.id.name_of_note );
+        textOfNoteET = view.findViewById ( R.id.text_of_note );
+        dateOfNoteET = view.findViewById ( R.id.date_of_note );
+        markOfNoteET = view.findViewById ( R.id.mark_of_note );
+
         saveButton = view.findViewById ( R.id.save_button );
 // Установить реквизиты заметки
         saveButton.setOnClickListener ( v -> {
             Controller controller = (Controller) getActivity ();
             controller.saveResult ( new Note (
-                    nameOfNote.getText ().toString (),
-                    textOfNote.getText ().toString (),
-                    dateOfNote.getText ().toString (),
-                    markOfNote.getText ().toString ()
+                    nameOfNoteET.getText ().toString (),
+                    textOfNoteET.getText ().toString (),
+                    dateOfNoteET.getText ().toString (),
+                    markOfNoteET.getText ().toString ()
             ) );
         } );
         return view;
@@ -67,10 +66,10 @@ public class OneNoteFragment extends Fragment {
 
     @Override
     public void onViewCreated ( View view, Bundle savedInstanceState ) {
-        nameOfNote.setText ( currentNote.getNameOfNote () );
-        textOfNote.setText ( currentNote.getTextOfNote () );
-        dateOfNote.setText ( currentNote.getDateOfNote () );
-        markOfNote.setText ( currentNote.getMarkOfNote () );
+        nameOfNoteET.setText ( currentNote.nameOfNote );
+        textOfNoteET.setText ( currentNote.textOfNote );
+        dateOfNoteET.setText ( currentNote.dateOfNote );
+        markOfNoteET.setText ( currentNote.markOfNote );
     }
 
     @Override
@@ -78,7 +77,7 @@ public class OneNoteFragment extends Fragment {
         super.onAttach ( context );
 
         if (!(context instanceof Controller)) {
-            throw new RuntimeException ( "Activity must implement ProfileFragment.Controller" );
+            throw new RuntimeException ( "Activity must implement OneNoteFragment.Controller" );
         }
         if (getArguments () != null) {
             currentNote = getArguments ().getParcelable ( CURRENT_NOTE );

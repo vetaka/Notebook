@@ -6,22 +6,10 @@ import android.os.Parcelable;
 //1.	Создайте класс данных со структурой заметок:
 // название заметки, описание заметки, дата создания и т. п.
 public class Note implements Parcelable {
-
-    public static final Creator<Note> CREATOR = new Creator<Note> () {
-        @Override
-        public Note createFromParcel ( Parcel in ) {
-            return new Note ( in );
-        }
-
-        @Override
-        public Note[] newArray ( int size ) {
-            return new Note[size];
-        }
-    };
-    private final String nameOfNote;
-    private final String textOfNote;
-    private final String dateOfNote;
-    private final String markOfNote;
+    public final String nameOfNote;
+    public final String textOfNote;
+    public final String dateOfNote;
+    public final String markOfNote;
 
     public Note ( String nameOfNote, String textOfNote, String dateOfNote, String markOfNote ) {
         this.nameOfNote = nameOfNote;
@@ -38,17 +26,35 @@ public class Note implements Parcelable {
     }
 
     @Override
-    public int describeContents () {
-        return 0;
+    public String toString () {
+        return nameOfNote + ' ' + textOfNote + ' ' + dateOfNote + ' ' + markOfNote;
     }
 
     @Override
     public void writeToParcel ( Parcel parcel, int i ) {
-        parcel.writeString ( getNameOfNote () );
-        parcel.writeString ( getTextOfNote () );
-        parcel.writeString ( getDateOfNote () );
-        parcel.writeString ( getMarkOfNote () );
+        parcel.writeString ( nameOfNote );
+        parcel.writeString ( textOfNote );
+        parcel.writeString ( dateOfNote );
+        parcel.writeString ( markOfNote );
     }
+
+    @Override
+    public int describeContents () {
+        return 0;
+    }
+
+    public static final Creator<Note> CREATOR = new Creator<Note> () {
+        @Override
+        public Note createFromParcel ( Parcel in ) {
+            return new Note ( in );
+        }
+
+        @Override
+        public Note[] newArray ( int size ) {
+            return new Note[size];
+        }
+    };
+
 
     public String getNameOfNote () {
         return nameOfNote;

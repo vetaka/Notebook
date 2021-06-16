@@ -8,11 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import static com.example.lesson6.OneNoteFragment.CURRENT_NOTE;
 
 
 /**
@@ -28,10 +24,8 @@ public class NotesFragment extends Fragment {
 
     private void addNoteToList ( Note currentNote ) {
         Button button = new Button ( getContext () );
-        button.setText ( currentNote.toString () );
-        button.setOnClickListener ( v -> {
-            ((Controller) getActivity ()).openOneNoteScreen ( currentNote );
-        } );
+        button.setText ( currentNote.markOfNote + " " + currentNote.nameOfNote + " " + currentNote.textOfNote );
+        button.setOnClickListener ( v -> ((Controller) getActivity ()).openOneNoteScreen ( currentNote ) );
         linearLayout.addView ( button );
     }
 
@@ -47,13 +41,13 @@ public class NotesFragment extends Fragment {
     public void onAttach ( Context context ) {
         super.onAttach ( context );
         if (!(context instanceof Controller)) {
-            throw new RuntimeException ( "Activity must implement ProfileListFragment.Controller" );
+            throw new RuntimeException ( "Activity must implement NotesFragment.Controller" );
         }
     }
 
     // вызывается после создания макета фрагмента, здесь мы проинициализируем список
     @Override
-    public void onViewCreated ( @NonNull View view, @Nullable Bundle savedInstanceState ) {
+    public void onViewCreated ( View view, Bundle savedInstanceState ) {
 
         linearLayout = view.findViewById ( R.id.linear );
         initList ();
@@ -73,12 +67,12 @@ public class NotesFragment extends Fragment {
         }
     }
 
-    // Сохраним текущую позицию (вызывается перед выходом из фрагмента)
-    @Override
-    public void onSaveInstanceState ( @NonNull Bundle outState ) {
-        outState.putParcelable ( CURRENT_NOTE, currentNote );
-        super.onSaveInstanceState ( outState );
-    }
+//    // Сохраним текущую позицию (вызывается перед выходом из фрагмента)
+//    @Override
+//    public void onSaveInstanceState ( @NonNull Bundle outState ) {
+//        outState.putParcelable ( CURRENT_NOTE, currentNote );
+//        super.onSaveInstanceState ( outState );
+//    }
 
 
     public interface Controller {

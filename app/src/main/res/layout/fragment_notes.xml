@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:padding="@dimen/paddings_note">
+    android:gravity="center"
+    tools:context=".MainActivity">
 
     <!--В этом случае мы воспользуемся динамически создаваемыми
-    элементами TextView. Поэтому макет содержит только корневой элемент.-->
+    элементами списка. Поэтому макет содержит только корневой элемент.-->
 
 
 </LinearLayout>

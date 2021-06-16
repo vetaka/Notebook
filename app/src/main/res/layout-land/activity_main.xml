@@ -5,15 +5,16 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal"
+    android:baselineAligned="false"
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/notes_land_container"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <FrameLayout
-        android:id="@+id/fragment_one_container"
+        android:id="@+id/one_note_container"
 
         android:layout_width="0dp"
         android:layout_height="match_parent"

@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements NotesFragment.Con
 
         getSupportFragmentManager ()
                 .beginTransaction ()
-                .add ( R.id.container_for_all, new NotesFragment () )
+                .add ( R.id.container, new NotesFragment () )
                 .commit ();
     }
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NotesFragment.Con
         boolean isLandscape = getResources ().getConfiguration ().orientation == Configuration.ORIENTATION_LANDSCAPE;
         getSupportFragmentManager ()
                 .beginTransaction ()
-                .add ( isLandscape ? R.id.fragment_one_container : R.id.notes_land_container, OneNoteFragment.newInstance ( currentNote ) )
+                .add ( isLandscape ? R.id.one_note_container : R.id.container, OneNoteFragment.newInstance ( currentNote ) )
                 .addToBackStack ( null )
                 .commit ();
 
