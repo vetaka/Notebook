@@ -24,7 +24,7 @@ public class NotesFragment extends Fragment {
 
     private void addNoteToList ( Note currentNote ) {
         Button button = new Button ( getContext () );
-        button.setText ( currentNote.markOfNote + " " + currentNote.nameOfNote + " " + currentNote.textOfNote );
+        button.setText ( currentNote.nameOfNote );
         button.setOnClickListener ( v -> ((Controller) getActivity ()).openOneNoteScreen ( currentNote ) );
         linearLayout.addView ( button );
     }
