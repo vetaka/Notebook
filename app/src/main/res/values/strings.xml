@@ -7,4 +7,6 @@
     <string name="hint_date_of_note">Дата ввода:</string>
     <string name="hint_mark_of_note">Особая отметка:</string>
     <string name="save">Сохранить</string>
+    <string name="menu_about_app">О приложении Notebook</string>
+    <string name="menu_gide_of_app">Справка</string>
 </resources>
