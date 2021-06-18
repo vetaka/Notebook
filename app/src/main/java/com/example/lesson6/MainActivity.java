@@ -2,7 +2,11 @@ package com.example.lesson6;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements NotesFragment.Controller, OneNoteFragment.Controller {
@@ -32,6 +36,31 @@ public class MainActivity extends AppCompatActivity implements NotesFragment.Con
                 .addToBackStack ( null )
                 .commit ();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu ( Menu menu ) {
+        getMenuInflater ().inflate ( R.menu.main_menu, menu );
+//        return super.onCreateOptionsMenu ( menu );
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected ( @NonNull MenuItem item ) {
+        switch (item.getItemId ()) {
+            case R.id.about_app:
+                Toast.makeText ( this, "Кратко о нашем приложении", Toast.LENGTH_LONG ).show ();
+                break;
+            case R.id.gide_of_app:
+                Toast.makeText ( this, "Как пользоваться?", Toast.LENGTH_LONG ).show ();
+                break;
+            default:
+                break;
+
+        }
+//        return super.onOptionsItemSelected ( item );
+        return true;
     }
 }
 
